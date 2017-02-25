@@ -21,8 +21,8 @@ import line_auth_init
 from botactions import bot_actions
 
 user_guide_desc = '''
-    嘿，我是阿虎，目前我只能讓你用來查字典，用法是：\n
-    開頭打dic + 想查的單字，例如: dic apple就能查出apple的中文解釋
+Hei, aku Runner, saya hanya bisa membiarkan Anda menggunakan kamus, penggunaan adalah: \ n
+Awal dic pertarungan + Ingin memeriksa sebuah kata, misalnya,: dic apple apple akan dapat mengetahui interpretasi Cina
 '''
 
 
@@ -88,7 +88,7 @@ def handle_text_message(event):
     elif parse_result.to_do_function:
         replyObj = getattr(bot_actions, parse_result.to_do_function)(parse_result.text_msg, event)
     else:
-        reply = '大爺我不知道你要幹麼，只好重覆你說的話啦~ \n'+ msg
+        reply = 'Kakek saya tidak tahu apa yang ingin Anda lakukan, tapi untuk mengulang apa yang Anda katakan teman ~ \ n'+ msg
         replyObj = TextSendMessage(text=reply)
 
     if replyObj:
@@ -117,7 +117,7 @@ def init_parse_text(text):
         parse_text.assign_function('lookup_eng_dic')
         parse_text.check_support('en-US')
 
-    if re.match(r'^我是誰|^我誰', parse_text.text_msg) or re.match(r'^[Pp]rofile$', parse_text.text_msg):
+    if re.match(r'^Siapakah Aku |^Siapakah akus', parse_text.text_msg) or re.match(r'^[Pp]rofile$', parse_text.text_msg):
         parse_text.assign_function('get_profile')
         parse_text.check_support('zh-TW')
 
